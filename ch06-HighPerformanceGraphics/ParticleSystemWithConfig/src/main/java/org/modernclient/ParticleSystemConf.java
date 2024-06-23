@@ -1,3 +1,5 @@
+package org.modernclient;
+
 import javafx.beans.property.*;
 import javafx.scene.paint.Color;
 
