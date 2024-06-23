@@ -27,6 +27,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.util.Subscription;
 
 
 public class MyShapesProperties extends Application {
@@ -89,10 +90,15 @@ public class MyShapesProperties extends Application {
         });*/
 
         // Change Listener using lambda expression
+        /*
         rotate.statusProperty().addListener((observableValue, oldValue, newValue) -> {
             text2.setText("Was " + oldValue + ", Now " + newValue);
         });
+        */
 
+        Subscription subscription = rotate.statusProperty().subscribe(value -> text2.setText("Animation Status = " + value));
+
+       // Subscription subscription = rotate.statusProperty().subscribe((oldValue, newValue) -> text2.setText("Was " + oldValue+" and now is "+newValue));
         // Change Listener using anonymous class
         /*rotate.statusProperty().addListener(new ChangeListener<Animation.Status>() {
             @Override
