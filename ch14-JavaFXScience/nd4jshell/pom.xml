@@ -10,7 +10,12 @@
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>11</version>
+      <version>23-ea+3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.nd4j</groupId>
+      <artifactId>nd4j-native-platform</artifactId>
+      <version>1.0.0-M2.1</version>
     </dependency>
   </dependencies>
   <build>
@@ -20,7 +25,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
         <configuration>
-          <release>11</release>
+          <release>23</release>
         </configuration>
       </plugin>
       <plugin>
@@ -39,7 +44,7 @@
             <longModulepath>false</longModulepath>
             <arguments>
                 <argument>--module-path</argument>
-                <classpath />
+                <argument>/opt/javafx-sdk-23/lib</argument>
                 <argument>--add-modules</argument>
                 <argument>javafx.controls</argument>
                 <argument>-classpath</argument>
