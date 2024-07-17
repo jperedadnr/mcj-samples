@@ -1,6 +1,7 @@
 package org.modernclientjava;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,7 +21,7 @@ import java.net.URL;
 
 public class WeatherApp extends Application {
 
-    private static final String API_KEY = "***************"; // TODO: Add valid API_KEY
+    private static final String API_KEY = "********************************"; // TODO: Add valid API_KEY
     private static final String CITY = "London";
 
     private ImageView imageView;
@@ -58,6 +59,7 @@ public class WeatherApp extends Application {
         try {
             String restUrl = "https://api.openweathermap.org/data/2.5/weather?appid=" + API_KEY + "&q=" + CITY;
             ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             Model model = objectMapper.readValue(new URL(restUrl), Model.class);
             updateModel(model);
         } catch (Exception e) {

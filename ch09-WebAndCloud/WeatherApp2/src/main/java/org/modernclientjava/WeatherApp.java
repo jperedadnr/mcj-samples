@@ -22,7 +22,7 @@ import java.net.URL;
 
 public class WeatherApp extends Application {
 
-    private static final String API_KEY = "***************"; // TODO: Add valid API_KEY
+    private static final String API_KEY = "********************************"; // TODO: Add valid API_KEY
     private static final String CITY = "London";
 
     private ImageView imageView;
