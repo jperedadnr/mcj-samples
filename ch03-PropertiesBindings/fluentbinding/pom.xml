@@ -11,14 +11,14 @@
     </parent>
 
     <groupId>org.modernclients.propertiesandbindings</groupId>
-    <artifactId>ArrayChangeEventExample</artifactId>
+    <artifactId>TriangleAreaFluentExample</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>ArrayChangeEventExample</name>
+    <name>TriangleAreaFluentExample</name>
 
     <properties>
-        <main.class>org.modernclients.propertiesandbindings.ArrayChangeEventExample</main.class>
+        <main.class>org.modernclients.propertiesandbindings.TriangleAreaFluentExample</main.class>
     </properties>
 
     <dependencies>

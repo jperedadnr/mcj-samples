@@ -11,14 +11,14 @@
     </parent>
 
     <groupId>org.modernclients.propertiesandbindings</groupId>
-    <artifactId>ArrayChangeEventExample</artifactId>
+    <artifactId>PropertiesExample</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>ArrayChangeEventExample</name>
+    <name>PropertiesExample</name>
 
     <properties>
-        <main.class>org.modernclients.propertiesandbindings.ArrayChangeEventExample</main.class>
+        <main.class>org.modernclients.propertiesandbindings.PropertiesExample</main.class>
     </properties>
 
     <dependencies>
