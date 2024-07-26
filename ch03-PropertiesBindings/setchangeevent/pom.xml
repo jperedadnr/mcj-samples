@@ -8,6 +8,7 @@
         <groupId>org.modernclients</groupId>
         <artifactId>parent-project</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <groupId>org.modernclients.propertiesandbindings</groupId>
@@ -18,7 +19,7 @@
     <name>SetChangeEventExample</name>
 
     <properties>
-        <main.class>org.modernclients.propertiesandbindings.SetChangeEventExample</main.class>
+        <main.class>setchangeevent/org.modernclients.propertiesandbindings.SetChangeEventExample</main.class>
     </properties>
 
     <dependencies>
