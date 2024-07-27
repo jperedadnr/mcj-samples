@@ -3,9 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.modernclients.css</groupId>
+        <groupId>org.modernclients</groupId>
         <artifactId>parent-project</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>applying-css</artifactId>
