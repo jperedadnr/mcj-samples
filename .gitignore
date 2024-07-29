@@ -3,3 +3,10 @@
 **/.gradle
 **/build
 **/target
+**/dist
+
+ch12-RaspberryPi/Sample4/nbproject/build-impl.xml
+ch12-RaspberryPi/Sample4/nbproject/genfiles.properties
+ch12-RaspberryPi/Sample4/nbproject/private/config.properties
+ch12-RaspberryPi/Sample4/nbproject/private/private.properties
+ch12-RaspberryPi/Sample4/nbproject/private/private.xml
