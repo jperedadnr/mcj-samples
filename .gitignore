@@ -4,6 +4,12 @@
 **/build
 **/target
 **/dist
+**/out
+**/libs
+**/installer
+**/image
+**/mods
+
 
 ch12-RaspberryPi/Sample4/nbproject/build-impl.xml
 ch12-RaspberryPi/Sample4/nbproject/genfiles.properties
