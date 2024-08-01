@@ -20,6 +20,7 @@
 
     <properties>
         <main.class>org.modernclients.highperformance.HelloCanvas</main.class>
+<!--        <main.class>org.modernclients.highperformance.DrawCanvas</main.class>-->
     </properties>
 
     <dependencies>
