@@ -20,6 +20,7 @@
 
     <properties>
         <main.class>org.modernclients.highperformance.GameOfLifeFXThread</main.class>
+<!--        <main.class>org.modernclients.highperformance.GameOfLifePublisherConsumer</main.class>-->
     </properties>
 
     <dependencies>

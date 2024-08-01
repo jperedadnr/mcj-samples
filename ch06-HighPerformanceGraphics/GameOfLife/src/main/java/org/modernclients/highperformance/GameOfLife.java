@@ -1,6 +1,8 @@
 package org.modernclients.highperformance;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -44,6 +46,16 @@ public class GameOfLife {
 				updateCell(previousGeneration, newGeneration, i, j);
 			}
 		}
+		return newGeneration;
+	}
+
+	public boolean[][] newGenerationParallel(boolean previousGeneration[][]) {
+		boolean[][] newGeneration = new boolean[columns][rows];
+		IntStream.range(0, columns).parallel().forEach(i -> {
+			for (int j = 0; j < rows; j++) {
+				updateCell(previousGeneration, newGeneration, i, j);
+			}
+		});
 		return newGeneration;
 	}
 
