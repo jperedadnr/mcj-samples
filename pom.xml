@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
-        <javafx.version>23-ea+22</javafx.version>
+        <javafx.version>21.0.2</javafx.version>
         <javafx.plugin.version>0.0.8</javafx.plugin.version>
     </properties>
 
@@ -41,9 +41,17 @@
         <module>ch03-PropertiesBindings/setchangeevent</module>
         <module>ch03-PropertiesBindings/whenbinding</module>
 
+        <module>ch04-JavaFXControls</module>
+
         <module>ch05-masteringVisualsAndCSSDesign/applying</module>
         <module>ch05-masteringVisualsAndCSSDesign/cssapi</module>
         <module>ch05-masteringVisualsAndCSSDesign/introduction</module>
+
+        <module>ch06-HighPerformanceGraphics/HelloCanvas</module>
+        <module>ch06-HighPerformanceGraphics/HelloCanvasMany</module>
+        <module>ch06-HighPerformanceGraphics/ParticleSystem</module>
+        <module>ch06-HighPerformanceGraphics/ParticleSystemWithConfig</module>
+        <module>ch06-HighPerformanceGraphics/GameOfLife</module>
 
         <module>ch09-WebAndCloud/WebView</module>
         <module>ch09-WebAndCloud/WebViewAction</module>

@@ -1,4 +1,4 @@
-package org.modernclient;
+package org.modernclients.highperformance;
 
 import java.util.ArrayList;
 import java.util.List;

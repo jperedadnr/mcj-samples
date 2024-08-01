@@ -12,16 +12,14 @@
     </parent>
 
     <groupId>org.modernclients.highperformance</groupId>
-    <artifactId>ParticleSystem</artifactId>
+    <artifactId>GameOfLife</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>ParticleSystem</name>
+    <name>GameOfLife</name>
 
     <properties>
-        <main.class>org.modernclients.highperformance.ParticleSystem</main.class>
-<!--        <main.class>org.modernclients.highperformance.BouncingBalls</main.class>-->
-<!--        <main.class>org.modernclients.highperformance.Mandelbrot</main.class>-->
+        <main.class>org.modernclients.highperformance.GameOfLifeFXThread</main.class>
     </properties>
 
     <dependencies>

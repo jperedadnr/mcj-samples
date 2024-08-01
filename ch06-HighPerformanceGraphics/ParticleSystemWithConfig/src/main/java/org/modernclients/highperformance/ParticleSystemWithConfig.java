@@ -1,18 +1,10 @@
-package org.modernclient;
+package org.modernclients.highperformance;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -41,7 +33,7 @@ public class ParticleSystemWithConfig extends GraphicApp {
     public void setup() {
         frames(20);
         width = 1200;
-        height = 800;
+        height = 700;
         GridPane gpConfRoot = buildConfigurationRoot();
         TitledPane tpConf = new TitledPane("Configuration", gpConfRoot);
         tpConf.setCollapsible(false);
