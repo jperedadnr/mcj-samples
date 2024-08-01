@@ -6,9 +6,10 @@
         <groupId>org.modernclients</groupId>
         <artifactId>parent-project</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.modernclient</groupId>
+    <groupId>org.modernclients.fundamentals</groupId>
     <artifactId>myshapesproperties</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -16,7 +17,7 @@
     <name>myshapesproperties</name>
 
     <properties>
-        <mainClass>org.modernclient.MyShapesProperties</mainClass>
+        <mainClass>org.modernclients.fundamentals.MyShapesProperties</mainClass>
     </properties>
 
     <dependencies>

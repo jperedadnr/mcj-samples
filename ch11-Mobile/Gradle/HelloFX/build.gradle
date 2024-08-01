@@ -19,7 +19,7 @@ gluonfx {
 }
 
 javafx {
-    version = "23-ea+22"
+    version = "21.0.2"
     modules = [ "javafx.controls" ]
 }
 

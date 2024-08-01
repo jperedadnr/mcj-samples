@@ -6,17 +6,18 @@
         <groupId>org.modernclients</groupId>
         <artifactId>parent-project</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.modernclient</groupId>
-    <artifactId>personui</artifactId>
+    <groupId>org.modernclients.fundamentals</groupId>
+    <artifactId>personuirecord</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>personuirecord</name>
 
     <properties>
-        <mainClass>org.modernclient.PersonUI</mainClass>
+        <mainClass>org.modernclients.fundamentals.PersonUI</mainClass>
     </properties>
 
     <dependencies>
