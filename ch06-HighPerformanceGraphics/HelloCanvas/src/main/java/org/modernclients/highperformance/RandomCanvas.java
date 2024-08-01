@@ -9,7 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class DrawCanvas extends Application {
+public class RandomCanvas extends Application {
 
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 600;
@@ -20,29 +20,16 @@ public class DrawCanvas extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Canvas canvas = new Canvas(800, 600);
-		GraphicsContext ctx = canvas.getGraphicsContext2D();
-		ctx.setLineWidth(10);
-		canvas.setOnMousePressed(e -> ctx.beginPath());
-		canvas.setOnMouseDragged(e -> {
-			ctx.lineTo(e.getX(), e.getY());
-			ctx.stroke();
-		});
-		canvas.setOnMouseClicked(e -> {
-			if (e.getButton() == MouseButton.SECONDARY) {
-				clear(ctx);
+		Canvas canvas = new Canvas(WIDTH, HEIGHT);
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+		for (int i = 0; i < canvas.getWidth(); i++) {
+			for (int j = 0; j < canvas.getHeight(); j++) {
+				gc.getPixelWriter().setColor(i, j, Color.color(Math.random(), Math.random(), Math.random()));
 			}
-		});
-		stage.setTitle("Drawing on Canvas");
+		}
+		stage.setTitle("Random Pixels");
 		stage.setScene(new Scene(new StackPane(canvas), WIDTH, HEIGHT));
 		stage.show();
-		clear(ctx);
-	}
-
-	public void clear(GraphicsContext ctx) {
-		ctx.setFill(Color.DARKBLUE);
-		ctx.fillRect(0, 0, WIDTH, HEIGHT);
-		ctx.setStroke(Color.ALICEBLUE);
 	}
 
 }
