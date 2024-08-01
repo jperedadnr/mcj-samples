@@ -21,6 +21,7 @@
     <properties>
         <main.class>org.modernclients.highperformance.HelloCanvas</main.class>
 <!--        <main.class>org.modernclients.highperformance.DrawCanvas</main.class>-->
+<!--        <main.class>org.modernclients.highperformance.RandomCanvas</main.class>-->
     </properties>
 
     <dependencies>
