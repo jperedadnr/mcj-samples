@@ -1,4 +1,4 @@
-package org.modernclient.model;
+package org.modernclients.fundamentals.model;
 
 import javafx.beans.Observable;
 import javafx.beans.property.SimpleStringProperty;

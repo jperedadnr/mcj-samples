@@ -11,11 +11,18 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
-        <javafx.version>23-ea+20</javafx.version>
+        <javafx.version>23-ea+22</javafx.version>
         <javafx.plugin.version>0.0.8</javafx.plugin.version>
     </properties>
 
     <modules>
+        <module>ch02-JavafxFundamentals/myshapes</module>
+        <module>ch02-JavafxFundamentals/myshapes2</module>
+        <module>ch02-JavafxFundamentals/myshapesfxml</module>
+        <module>ch02-JavafxFundamentals/myshapesproperties</module>
+        <module>ch02-JavafxFundamentals/personui</module>
+        <module>ch02-JavafxFundamentals/personuirecord</module>
+
         <module>ch03-PropertiesBindings/arraychangeevent</module>
         <module>ch03-PropertiesBindings/bidirectional</module>
         <module>ch03-PropertiesBindings/directextension</module>
@@ -45,6 +52,5 @@
         <module>ch09-WebAndCloud/WeatherApp1</module>
         <module>ch09-WebAndCloud/WeatherApp2</module>
         <module>ch09-WebAndCloud/WeatherApp3</module>
-
     </modules>
 </project>

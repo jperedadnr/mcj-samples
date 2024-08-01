@@ -1,7 +1,7 @@
-package org.modernclient;
+package org.modernclients.fundamentals;
 
-import org.modernclient.model.Person;
-import org.modernclient.model.SampleData;
+import org.modernclients.fundamentals.model.Person;
+import org.modernclients.fundamentals.model.SampleData;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;

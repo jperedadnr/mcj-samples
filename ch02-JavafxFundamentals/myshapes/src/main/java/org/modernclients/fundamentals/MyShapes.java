@@ -1,4 +1,4 @@
-package org.modernclient;
+package org.modernclients.fundamentals;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

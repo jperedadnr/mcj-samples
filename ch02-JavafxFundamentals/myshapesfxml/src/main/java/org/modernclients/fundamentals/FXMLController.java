@@ -1,4 +1,4 @@
-package org.modernclient;
+package org.modernclients.fundamentals;
 
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
