@@ -1,9 +1,8 @@
-package org.modernclient;
+package org.modernclients.highperformance;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -19,11 +18,11 @@ public class HelloCanvas extends Application {
 	public static void main(String[] args) {
 		launch();
 	}
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
-		Canvas canvas = new Canvas(800, 600);
-		GraphicsContext gc = canvas.getGraphicsContext2D();
+		var canvas = new Canvas(800, 600);
+		var gc = canvas.getGraphicsContext2D();
 		gc.setFill(Color.WHITESMOKE);
 		gc.fillRect(0, 0, WIDTH, HEIGHT);
 		gc.setFill(Color.DARKBLUE);
@@ -38,6 +37,5 @@ public class HelloCanvas extends Application {
 		stage.setTitle("Hello Canvas");
 		stage.show();
 	}
-
 }
 

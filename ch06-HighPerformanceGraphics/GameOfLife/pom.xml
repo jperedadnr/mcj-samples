@@ -12,17 +12,16 @@
     </parent>
 
     <groupId>org.modernclients.highperformance</groupId>
-    <artifactId>HelloCanvas</artifactId>
+    <artifactId>GameOfLife</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>HelloCanvas</name>
+    <name>GameOfLife</name>
 
     <properties>
-        <main.class>org.modernclients.highperformance.HelloCanvas</main.class>
-<!--        <main.class>org.modernclients.highperformance.CanvasCoordinates</main.class>-->
-<!--        <main.class>org.modernclients.highperformance.CanvasDrawing</main.class>-->
-<!--        <main.class>org.modernclients.highperformance.CanvasRandomColors</main.class>-->
+        <main.class>org.modernclients.highperformance.GameOfLifeFXThread</main.class>
+<!--        <main.class>org.modernclients.highperformance.LockedThread</main.class>-->
+<!--        <main.class>org.modernclients.highperformance.GameOfLifePublisherConsumer</main.class>-->
     </properties>
 
     <dependencies>

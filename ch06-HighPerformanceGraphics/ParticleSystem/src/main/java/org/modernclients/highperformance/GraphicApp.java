@@ -1,4 +1,4 @@
-package org.modernclient;
+package org.modernclients.highperformance;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

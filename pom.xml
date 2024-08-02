@@ -41,9 +41,17 @@
         <module>ch03-PropertiesBindings/setchangeevent</module>
         <module>ch03-PropertiesBindings/whenbinding</module>
 
+        <module>ch04-JavaFXControls</module>
+
         <module>ch05-masteringVisualsAndCSSDesign/applying</module>
         <module>ch05-masteringVisualsAndCSSDesign/cssapi</module>
         <module>ch05-masteringVisualsAndCSSDesign/introduction</module>
+
+        <module>ch06-HighPerformanceGraphics/HelloCanvas</module>
+        <module>ch06-HighPerformanceGraphics/HelloCanvasMany</module>
+        <module>ch06-HighPerformanceGraphics/ParticleSystem</module>
+        <module>ch06-HighPerformanceGraphics/ParticleSystemWithConfig</module>
+        <module>ch06-HighPerformanceGraphics/GameOfLife</module>
 
         <module>ch09-WebAndCloud/WebView</module>
         <module>ch09-WebAndCloud/WebViewAction</module>
