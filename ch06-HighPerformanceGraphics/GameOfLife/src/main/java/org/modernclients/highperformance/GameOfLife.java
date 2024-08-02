@@ -49,7 +49,7 @@ public class GameOfLife {
 		return newGeneration;
 	}
 
-	public boolean[][] newGenerationParallel(boolean previousGeneration[][]) {
+	public boolean[][] newGenerationParallel(boolean[][] previousGeneration) {
 		boolean[][] newGeneration = new boolean[columns][rows];
 		IntStream.range(0, columns).parallel().forEach(i -> {
 			for (int j = 0; j < rows; j++) {
@@ -69,15 +69,19 @@ public class GameOfLife {
 			newGeneration[i][j] = true;
 		}
 	}
+
 	private int countNeighbours(boolean[][] copy, int i, int j) {
 		int[][] borders = {
-				{i - 1, j -1}, {i -1, j}, {i -1, j+ 1},
-				{i, j -1}, {i, j + 1},
-				{i +1, j - 1}, {i +1, j}, {i +1, j +1}
+				{i - 1, j - 1}, {i - 1, j}, {i - 1, j + 1},
+				{i, j - 1}, {i, j + 1},
+				{i + 1, j - 1}, {i + 1, j}, {i + 1, j + 1}
 		};
 		return (int) Arrays.stream(borders)
-				.filter(b -> b[0] > -1 && b[0] < columns &&
-						b[1] > -1 && b[1] < rows && copy[b[0]][b[1]])
+				.filter(b -> b[0] > -1 &&
+						b[0] < columns &&
+						b[1] > -1 &&
+						b[1] < rows &&
+						copy[b[0]][b[1]])
 				.count();
 	}
 }

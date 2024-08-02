@@ -15,22 +15,29 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-public class JuliaSetWithConfig extends GraphicApp {
+public class JuliaSet extends GraphicApp {
 
-    private static final int MAX_ITERATIONS = 100;
-    private double zx, zy, cX, cY, tmp;
+    private final static int MAX_ITERATIONS = 60;
+    private final static int TOTAL_FRAMES = 10;
+    private double zx, zy, tmp;
     int i;
-    private int totalIterations = 0;
-    private final BooleanProperty running = new SimpleBooleanProperty(true);
-    private final JuliaSetConf conf = new JuliaSetConf();
+    private JuliaSet.JuliaSetConf conf;
+    private BooleanProperty running = new SimpleBooleanProperty(false);
+    private int totalIterations;
     private Runnable updateConf;
+
+    public static void main(String[] args) {
+        launch();
+    }
 
     @Override
     public void setup() {
         width = 1200;
-        height = 600;
-        frames(20);
+        height = 800;
+        conf = new JuliaSetConf();
+        totalIterations = MAX_ITERATIONS;
         setBottom(createConfPanel());
+        frames(0);
     }
 
     @Override
@@ -84,6 +91,7 @@ public class JuliaSetWithConfig extends GraphicApp {
     }
 
     public static class JuliaSetConf {
+
         public double threshold = 0.8;
         public double lighterR = 0.7;
         public double lighterG = 0.7;
@@ -138,7 +146,6 @@ public class JuliaSetWithConfig extends GraphicApp {
         Slider sldI = slider(-1, 1.0, conf.ci);
         sldI.setMinSize(300, 10);
         Button btnRun = new Button("Animate");
-        // since we are not using bind we need to get all the properties here
         updateConf = () -> {
             conf.lighterR = spLigherR.getValue();
             conf.lighterG = spLigherG.getValue();
@@ -158,7 +165,7 @@ public class JuliaSetWithConfig extends GraphicApp {
             conf.infinityColor = clInifinity.getValue();
             conf.maxIterations = spMaxIterations.getValue();
             totalIterations = conf.maxIterations;
-            frames(20);
+            frames(TOTAL_FRAMES);
         };
         btnRun.setOnAction(e -> {
             updateConf.run();
@@ -192,4 +199,5 @@ public class JuliaSetWithConfig extends GraphicApp {
         slider.valueProperty().addListener(c -> updateConf.run());
         return slider;
     }
+
 }

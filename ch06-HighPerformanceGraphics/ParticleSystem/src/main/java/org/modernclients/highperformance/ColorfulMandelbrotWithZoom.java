@@ -1,28 +1,32 @@
 package org.modernclients.highperformance;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
-public class Mandelbrot extends GraphicApp {
+public class ColorfulMandelbrotWithZoom extends GraphicApp {
 
-    private final int MAX_ITERATIONS = 100;
+    private final int MAX_ITERATIONS = 200;
     private double zx, zy, cX, cY, tmp;
     int i;
+
+    public static void main(String[] args) {
+        launch();
+    }
 
     @Override
     public void setup() {
         width = 1200;
         height = 800;
-        Canvas canvas = graphicContext.getCanvas();
-        BorderPane bp = (BorderPane) canvas.getParent();
-        bp.setCenter(null);
-        StackPane p = new StackPane(canvas);
+        var canvas = graphicContext.getCanvas();
+        var bp = (BorderPane) canvas.getParent();
+        var p = new StackPane(canvas);
+        var sp = new ScrollPane(p);
+
         p.setMinSize(20000, 20000);
-        ScrollPane sp = new ScrollPane(p);
+        bp.setCenter(null);
         sp.setPrefSize(1200, 800);
         sp.setVvalue(0.5);
         sp.setHvalue(0.5);
@@ -65,15 +69,14 @@ public class Mandelbrot extends GraphicApp {
                     zx = tmp;
                     i++;
                 }
-                // if the steps above are not heading towards infinite we draw the pixel with a specific color
+                // if it is not exploding to infinite
                 if (i < MAX_ITERATIONS) {
                     double newC = ((double) i) / ((double) MAX_ITERATIONS);
                     Color c;
-                    if (newC > 0.4) {
+                    if (newC > 0.4)
                         c = Color.color(newC, 0.8, newC);
-                    } else {
+                    else
                         c = Color.color(0.2, newC, 0.2);
-                    }
                     graphicContext.getPixelWriter().setColor(x, y, c);
                 } else {
                     graphicContext.getPixelWriter().setColor(x, y, Color.BLACK);
@@ -81,7 +84,7 @@ public class Mandelbrot extends GraphicApp {
 
             }
         }
-        System.out.println("Generating mandelbrot took " + (System.currentTimeMillis() - start)  + " ms");
+        System.out.println("Generating mandelbrot took " + (System.currentTimeMillis() - start) + " ms");
     }
 
 }

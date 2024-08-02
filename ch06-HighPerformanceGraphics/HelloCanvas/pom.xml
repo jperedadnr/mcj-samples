@@ -20,8 +20,9 @@
 
     <properties>
         <main.class>org.modernclients.highperformance.HelloCanvas</main.class>
-<!--        <main.class>org.modernclients.highperformance.DrawCanvas</main.class>-->
-<!--        <main.class>org.modernclients.highperformance.RandomCanvas</main.class>-->
+<!--        <main.class>org.modernclients.highperformance.CanvasCoordinates</main.class>-->
+<!--        <main.class>org.modernclients.highperformance.CanvasDrawing</main.class>-->
+<!--        <main.class>org.modernclients.highperformance.CanvasRandomColors</main.class>-->
     </properties>
 
     <dependencies>

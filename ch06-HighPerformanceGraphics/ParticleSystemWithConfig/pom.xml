@@ -20,7 +20,7 @@
 
     <properties>
         <main.class>org.modernclients.highperformance.ParticleSystemWithConfig</main.class>
-<!--        <main.class>org.modernclients.highperformance.JuliaSetWithConfig</main.class>-->
+<!--        <main.class>org.modernclients.highperformance.JuliaSet</main.class>-->
     </properties>
 
     <dependencies>

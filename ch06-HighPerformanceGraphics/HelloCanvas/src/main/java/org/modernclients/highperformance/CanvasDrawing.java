@@ -9,7 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class DrawCanvas extends Application {
+public class CanvasDrawing extends Application {
 
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 600;
@@ -18,7 +18,6 @@ public class DrawCanvas extends Application {
 		launch();
 	}
 
-	@Override
 	public void start(Stage stage) throws Exception {
 		Canvas canvas = new Canvas(800, 600);
 		GraphicsContext ctx = canvas.getGraphicsContext2D();
@@ -44,6 +43,4 @@ public class DrawCanvas extends Application {
 		ctx.fillRect(0, 0, WIDTH, HEIGHT);
 		ctx.setStroke(Color.ALICEBLUE);
 	}
-
 }
-

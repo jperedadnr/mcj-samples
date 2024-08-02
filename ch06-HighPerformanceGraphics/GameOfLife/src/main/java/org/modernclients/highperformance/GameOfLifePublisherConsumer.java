@@ -7,9 +7,9 @@ import javafx.scene.paint.Color;
 
 public class GameOfLifePublisherConsumer extends GraphicApp {
 
-    final int WIDTH = 1200;
-    final int HEIGHT = 800;
-    final int CELL_SIZE = 2;
+    final int WIDTH = 2500;
+    final int HEIGHT = 2500;
+    final int CELL_SIZE = 1;
     boolean[][] currentGeneration;
     int columns = WIDTH / CELL_SIZE;
     int rows = HEIGHT / CELL_SIZE;
@@ -30,6 +30,7 @@ public class GameOfLifePublisherConsumer extends GraphicApp {
         gameOfLife = new GameOfLife(columns, rows, CELL_SIZE);
         currentGeneration = gameOfLife.newCells();
         Task<Void> producerTask = new Task<>() {
+
             @Override
             protected Void call() throws Exception {
                 while (true) {
@@ -39,6 +40,7 @@ public class GameOfLifePublisherConsumer extends GraphicApp {
             }
         };
         Task<Void> consumerTask = new Task<>() {
+
             @Override
             protected Void call() throws Exception {
                 while (true) {
@@ -47,7 +49,8 @@ public class GameOfLifePublisherConsumer extends GraphicApp {
                         Platform.runLater(() -> {
                             // we need to draw the background because we are not using draw loop anymore
                             graphicContext.setFill(Color.LIGHTGRAY);
-                            graphicContext.fillRect(0, 0, width, height);
+                            graphicContext.fillRect(0, 0,
+                                    width, height);
                             gameOfLife.drawCells(data, graphicContext);
                         });
                         if (numberOfFramesPerSecond > 0) {
@@ -69,8 +72,7 @@ public class GameOfLifePublisherConsumer extends GraphicApp {
 
     @Override
     public void draw() {
-        // we don't use the main loop anymore, but we have to
-        // draw the background in draw cells
+        // TODO Auto-generated method stub
     }
 }
 

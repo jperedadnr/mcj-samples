@@ -3,8 +3,9 @@ package org.modernclients.highperformance;
 import javafx.scene.paint.Color;
 
 public class GameOfLifeFXThread extends GraphicApp {
-    final int WIDTH = 1200;
-    final int HEIGHT = 800;
+
+    final int WIDTH = 2500;
+    final int HEIGHT = 2500;
     final int CELL_SIZE = 5;
     boolean[][] currentGeneration;
     int columns = WIDTH / CELL_SIZE;
@@ -34,7 +35,8 @@ public class GameOfLifeFXThread extends GraphicApp {
                 (System.currentTimeMillis() - initial));
         initial = System.currentTimeMillis();
         currentGeneration = gameOfLife.newGeneration(currentGeneration);
+        // test with parallel stream
+//        currentGeneration = gameOfLife.newGenerationParallel(currentGeneration);
         System.out.println("Time to calculate new generation: " + (System.currentTimeMillis() - initial));
     }
-
 }
