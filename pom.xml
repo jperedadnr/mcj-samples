@@ -53,6 +53,17 @@
         <module>ch06-HighPerformanceGraphics/ParticleSystemWithConfig</module>
         <module>ch06-HighPerformanceGraphics/GameOfLife</module>
 
+        <module>ch07-BridgingSwingAndJavaFX/fxinswing</module>
+        <module>ch07-BridgingSwingAndJavaFX/multifx-in-swing</module>
+        <module>ch07-BridgingSwingAndJavaFX/webview-in-swing</module>
+        <module>ch07-BridgingSwingAndJavaFX/interactivefx</module>
+        <module>ch07-BridgingSwingAndJavaFX/bidirectionalfx</module>
+        <module>ch07-BridgingSwingAndJavaFX/multifx-in-swing-dynamic</module>
+        <module>ch07-BridgingSwingAndJavaFX/multifx-in-swing-dynamic-enhanced</module>
+        <module>ch07-BridgingSwingAndJavaFX/swingdndfx</module>
+        <module>ch07-BridgingSwingAndJavaFX/3dfx-in-swing</module>
+        <module>ch07-BridgingSwingAndJavaFX/swinginfx</module>
+
         <module>ch09-WebAndCloud/WebView</module>
         <module>ch09-WebAndCloud/WebViewAction</module>
         <module>ch09-WebAndCloud/WebViewHistory</module>
