@@ -130,10 +130,10 @@ public class ShapesAndMesh extends Application {
             box = new Box(100, 100, 100);
             meshView = createMeshView(100);
 
-            sphere.setTranslateX(-300);
-            cylinder.setTranslateX(-100);
-            box.setTranslateX(100);
-            meshView.setTranslateX(300);
+            sphere.setTranslateX(100);
+            cylinder.setTranslateX(300);
+            box.setTranslateX(500);
+            meshView.setTranslateX(700);
 
             sphere.setMaterial(new PhongMaterial(Color.RED));
             cylinder.setMaterial(new PhongMaterial(Color.YELLOW));

@@ -34,6 +34,10 @@
             <version>0.5.4</version>
             <exclusions>
                 <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
                     <groupId>org.jzy3d</groupId>
                     <artifactId>*</artifactId>
                 </exclusion>
