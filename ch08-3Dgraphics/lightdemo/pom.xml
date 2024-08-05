@@ -19,7 +19,7 @@
     <name>LightDemo</name>
 
     <properties>
-        <main.class>org.modernclientjava.javafx3d.LightDemo</main.class>
+        <main.class>org.modernclients.javafx3d.LightDemo</main.class>
     </properties>
 
     <dependencies>

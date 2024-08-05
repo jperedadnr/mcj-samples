@@ -19,7 +19,7 @@
     <name>SpecularColorDemo</name>
 
     <properties>
-        <main.class>org.modernclientjava.javafx3d.SpecularColorDemo</main.class>
+        <main.class>org.modernclients.javafx3d.SpecularColorDemo</main.class>
     </properties>
 
     <dependencies>

@@ -1,4 +1,4 @@
-package org.modernclientjava.javafx3d;
+package org.modernclients.javafx3d;
   
 import javafx.application.Application;
 import javafx.beans.property.ObjectProperty;

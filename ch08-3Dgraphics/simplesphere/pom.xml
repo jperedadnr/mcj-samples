@@ -19,7 +19,7 @@
     <name>SimpleSphere</name>
 
     <properties>
-        <main.class>org.modernclientjava.javafx3d.SimpleSphere</main.class>
+        <main.class>org.modernclients.javafx3d.SimpleSphere</main.class>
     </properties>
 
     <dependencies>

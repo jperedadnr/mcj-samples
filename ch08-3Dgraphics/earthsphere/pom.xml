@@ -19,7 +19,7 @@
     <name>EarthSphere</name>
 
     <properties>
-        <main.class>org.modernclientjava.javafx3d.EarthSphere</main.class>
+        <main.class>org.modernclients.javafx3d.EarthSphere</main.class>
     </properties>
 
     <dependencies>

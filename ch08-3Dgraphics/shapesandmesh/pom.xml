@@ -19,7 +19,7 @@
     <name>ShapesAndMesh</name>
 
     <properties>
-        <main.class>org.modernclientjava.javafx3d.ShapesAndMesh</main.class>
+        <main.class>org.modernclients.javafx3d.ShapesAndMesh</main.class>
     </properties>
 
     <dependencies>

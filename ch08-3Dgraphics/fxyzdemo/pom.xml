@@ -19,7 +19,7 @@
     <name>FxyzDemo</name>
 
     <properties>
-        <main.class>org.modernclientjava.javafx3d.FxyzDemo</main.class>
+        <main.class>org.modernclients.javafx3d.FxyzDemo</main.class>
     </properties>
 
     <dependencies>

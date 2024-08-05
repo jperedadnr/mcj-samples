@@ -19,7 +19,7 @@
     <name>SphereCylinderBox</name>
 
     <properties>
-        <main.class>org.modernclientjava.javafx3d.SphereCylinderBox</main.class>
+        <main.class>org.modernclients.javafx3d.SphereCylinderBox</main.class>
     </properties>
 
     <dependencies>

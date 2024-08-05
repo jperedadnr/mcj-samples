@@ -19,7 +19,7 @@
     <name>EventDemo</name>
 
     <properties>
-        <main.class>org.modernclientjava.javafx3d.EventDemo</main.class>
+        <main.class>org.modernclients.javafx3d.EventDemo</main.class>
     </properties>
 
     <dependencies>
