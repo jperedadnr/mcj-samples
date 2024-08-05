@@ -3,10 +3,15 @@ package org.modernclients.javafx3d;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
+import javafx.scene.DirectionalLight;
 import javafx.scene.Group;
+import javafx.scene.LightBase;
 import javafx.scene.Node;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.PointLight;
@@ -30,9 +35,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Transform;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
+
+import java.util.List;
 
 public class LightDemo extends Application {
     private final Model model;
@@ -63,6 +71,9 @@ public class LightDemo extends Application {
         private final DoubleProperty greenLightX = new SimpleDoubleProperty(this, "greenLightX", 30.0d);
         private final DoubleProperty greenLightY = new SimpleDoubleProperty(this, "greenLightY", -15.0d);
         private final DoubleProperty greenLightZ = new SimpleDoubleProperty(this, "greenLightZ", 305.0d);
+        private final DoubleProperty yellowLightX = new SimpleDoubleProperty(this, "yellowLightX", 30.0d);
+        private final DoubleProperty yellowLightY = new SimpleDoubleProperty(this, "yellowLightY", -15.0d);
+        private final DoubleProperty yellowLightZ = new SimpleDoubleProperty(this, "yellowLightZ", 305.0d);
 
         public DoubleProperty redLightXProperty() {
             return redLightX;
@@ -99,18 +110,31 @@ public class LightDemo extends Application {
         public DoubleProperty greenLightZProperty() {
             return greenLightZ;
         }
+
+        public DoubleProperty yellowLightXProperty() {
+            return yellowLightX;
+        }
+
+        public DoubleProperty yellowLightYProperty() {
+            return yellowLightY;
+        }
+
+        public DoubleProperty yellowLightZProperty() {
+            return yellowLightZ;
+        }
     }
 
     private static class View {
         public Scene scene;
 
-        public Box box1;
-        public Box box2;
-        public Box box3;
-        public PerspectiveCamera camera;
-        public PointLight redLight;
-        public PointLight blueLight;
-        public SpotLight greenLight;
+        private final Box box1;
+        private final Box box2;
+        private final Box box3;
+        private final PerspectiveCamera camera;
+        private final PointLight redLight;
+        private final PointLight blueLight;
+        private final SpotLight greenLight;
+        private final DirectionalLight yellowLight;
 
         private View(Model model) {
             box1 = new Box(10, 10, 10);
@@ -146,8 +170,13 @@ public class LightDemo extends Application {
             greenLight.translateYProperty().bind(model.blueLightYProperty());
             greenLight.translateZProperty().bind(model.blueLightZProperty());
 
+            yellowLight = new DirectionalLight(Color.YELLOW);
+            yellowLight.translateXProperty().bind(model.yellowLightXProperty());
+            yellowLight.translateYProperty().bind(model.blueLightYProperty());
+            yellowLight.translateZProperty().bind(model.blueLightZProperty());
+
             Group group = new Group(new Group(box1, box2, box3),
-                    camera, redLight, blueLight, greenLight);
+                    camera, redLight, blueLight, greenLight, yellowLight);
             SubScene subScene = new SubScene(group, 640, 400, true, SceneAntialiasing.BALANCED);
             subScene.setCamera(camera);
 
@@ -189,12 +218,24 @@ public class LightDemo extends Application {
             greenControlPanel.setAlignment(Pos.CENTER);
             greenTab.setContent(greenControlPanel);
 
-            TabPane tabPane = new TabPane(redTab, blueTab, greenTab);
+            // Yellow Light
+            Tab yellowTab = createTab("Yellow Light", yellowLight);
+
+            CheckBox yellowLightOn = createCheckBox(yellowLight);
+            HBox hbox7 = createXYZHBox(model.yellowLightX, model.yellowLightY, model.yellowLightZ);
+            HBox hBox8 = addDirectionalLightControls(yellowLight);
+
+            VBox yellowControlPanel = new VBox(10, yellowLightOn, hbox7, hBox8);
+            yellowControlPanel.setPadding(new Insets(10, 10, 10, 10));
+            yellowControlPanel.setAlignment(Pos.CENTER);
+            yellowTab.setContent(yellowControlPanel);
+
+            TabPane tabPane = new TabPane(redTab, blueTab, greenTab, yellowTab);
             BorderPane borderPane = new BorderPane(subScene, null, null, tabPane, null);
             scene = new Scene(borderPane);
         }
 
-        private Tab createTab(String title, PointLight light) {
+        private Tab createTab(String title, LightBase light) {
             Tab tab = new Tab(title);
             tab.setClosable(false);
             Rectangle red = new Rectangle(10, 10);
@@ -203,7 +244,7 @@ public class LightDemo extends Application {
             return tab;
         }
 
-        private CheckBox createCheckBox(PointLight light) {
+        private CheckBox createCheckBox(LightBase light) {
             CheckBox lightOnCheckBox = new CheckBox("Light On/Off");
             lightOnCheckBox.setSelected(true);
             light.lightOnProperty().bind(lightOnCheckBox.selectedProperty());
@@ -211,9 +252,9 @@ public class LightDemo extends Application {
         }
 
         private HBox createXYZHBox(DoubleProperty xProperty, DoubleProperty yProperty, DoubleProperty zProperty) {
-            Slider lightXSlider = createSlider(20);
-            Slider lightYSlider = createSlider(-20);
-            Slider lightZSlider = createSlider(-20);
+            Slider lightXSlider = createSlider(-40, 40,20);
+            Slider lightYSlider = createSlider(-40, 40, -20);
+            Slider lightZSlider = createSlider(-40, 40, -20);
             lightXSlider.valueProperty().bindBidirectional(xProperty);
             lightYSlider.valueProperty().bindBidirectional(yProperty);
             lightZSlider.valueProperty().bindBidirectional(zProperty);
@@ -224,13 +265,6 @@ public class LightDemo extends Application {
             hBox.setPadding(new Insets(10, 10, 10, 10));
             hBox.setAlignment(Pos.CENTER);
             return hBox;
-        }
-
-        private Slider createSlider(double value) {
-            Slider slider = new Slider(-40, 40, value);
-            slider.setShowTickMarks(true);
-            slider.setShowTickLabels(true);
-            return slider;
         }
 
         // since JavaFX 13 -->
@@ -258,8 +292,8 @@ public class LightDemo extends Application {
         private HBox addLightControls(PointLight light) {
             VBox range = createSliderControl("range", light.maxRangeProperty(), 0, 100, light.getMaxRange());
             VBox c = createSliderControl("constant", light.constantAttenuationProperty(), -1, 1, light.getConstantAttenuation());
-            VBox lc = createSliderControl("linear", light.linearAttenuationProperty(), -1, 1, light.getLinearAttenuation());
-            VBox qc = createSliderControl("quadratic", light.quadraticAttenuationProperty(), -1, 1, light.getQuadraticAttenuation());
+            VBox lc = createSliderControl("linear", light.linearAttenuationProperty(), -0.1, 0.1, light.getLinearAttenuation());
+            VBox qc = createSliderControl("quadratic", light.quadraticAttenuationProperty(), -0.01, 0.01, light.getQuadraticAttenuation());
             HBox hBox = new HBox(10, range, c, lc, qc);
             hBox.setPadding(new Insets(10, 10, 10, 10));
             hBox.setAlignment(Pos.CENTER);
@@ -270,22 +304,68 @@ public class LightDemo extends Application {
         private HBox addSpotLightControls(SpotLight light) {
             VBox innerAngle = createSliderControl("innerAngle", light.innerAngleProperty(), 0, 180, light.getInnerAngle());
             VBox outerAngle = createSliderControl("outerAngle", light.outerAngleProperty(), 0, 180, light.getOuterAngle());
-            VBox falloff = createSliderControl("falloff", light.falloffProperty(), 0, 10, light.getFalloff());
+            VBox falloff = createSliderControl("falloff", light.falloffProperty(), -5, 5, light.getFalloff());
             HBox hBox = new HBox(10, innerAngle, outerAngle, falloff);
             hBox.setPadding(new Insets(10, 10, 10, 10));
             hBox.setAlignment(Pos.CENTER);
             return hBox;
         }
 
+        // since JavaFX 18 -->
+        private HBox addDirectionalLightControls(DirectionalLight light) {
+            HBox hBox = new HBox(10);
+            hBox.getChildren().addAll(createDirectionControls(light.getTransforms(), light.directionProperty()));
+            hBox.setPadding(new Insets(10, 10, 10, 10));
+            hBox.setAlignment(Pos.CENTER);
+            return hBox;
+        }
+
+        private List<Node> createDirectionControls(ObservableList<Transform> transforms, ObjectProperty<Point3D> directionProperty) {
+            Rotate transX = new Rotate(0, Rotate.X_AXIS);
+            Rotate transY = new Rotate(0, Rotate.Y_AXIS);
+            Rotate transZ = new Rotate(0, Rotate.Z_AXIS);
+            transforms.addAll(transX, transY, transZ);
+            VBox rotX = createSliderControl("rot x", transX.angleProperty(), -180, 180, 0);
+            VBox rotY = createSliderControl("rot y", transY.angleProperty(), -180, 180, 0);
+            VBox rotZ = createSliderControl("rot z", transZ.angleProperty(), -180, 180, 0);
+
+            Slider sliderX = createSlider(-5, 5, directionProperty.get().getX());
+            Slider sliderY = createSlider(-5, 5, directionProperty.get().getY());
+            Slider sliderZ = createSlider(-5, 5, directionProperty.get().getZ());
+            directionProperty.bind(Bindings.createObjectBinding(() ->
+                            new Point3D(sliderX.getValue(), sliderY.getValue(), sliderZ.getValue()),
+                    sliderX.valueProperty(), sliderY.valueProperty(), sliderZ.valueProperty()));
+            VBox dirX = createSliderControl("dir x", sliderX);
+            VBox dirY = createSliderControl("dir y", sliderY);
+            VBox dirZ = createSliderControl("dir z", sliderZ);
+
+            return List.of(rotX, rotY, rotZ, dirX, dirY, dirZ);
+        }
+
         private VBox createSliderControl(String name, DoubleProperty property, double min, double max, double start) {
+            var slider = createSlider(min, max, start);
+            property.bind(slider.valueProperty());
+            return createSliderControl(name, slider);
+        }
+
+        private VBox createSliderControl(String name, Slider slider) {
+            TextField tf = createTextField(slider);
+            return new VBox(5, new Label(name), new HBox(slider, tf));
+        }
+
+        private TextField createTextField(Slider slider) {
+            TextField tf = new TextField();
+            tf.textProperty().bindBidirectional(slider.valueProperty(), new NumberStringConverter());
+            tf.setMaxWidth(50);
+            return tf;
+        }
+
+        private Slider createSlider(double min, double max, double start) {
             Slider slider = new Slider(min, max, start);
             slider.setShowTickMarks(true);
             slider.setShowTickLabels(true);
-            property.bindBidirectional(slider.valueProperty());
-            TextField tf = new TextField();
-            tf.textProperty().bindBidirectional(slider.valueProperty(), new NumberStringConverter());
-            tf.setMaxWidth(40);
-            return new VBox(5, new Label(name), new HBox(slider, tf));
+            return slider;
         }
+
     }
 }
