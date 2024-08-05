@@ -10,16 +10,19 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.modernjavafx.nl</groupId>
-    <artifactId>modernfx-chapter13</artifactId>
+    <groupId>org.modernclients.ml</groupId>
+    <artifactId>training</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>TrainingHelperApp</name>
 
     <properties>
-        <main.class>org.modernjavafx.ml.ui.TrainingHelperApp</main.class>
-        <dl4j.version>1.0.0-beta7</dl4j.version>
+        <main.class>org.modernclients.ml.ui.TrainingHelperApp</main.class>
+<!--        <main.class>org.modernclients.ml.ui.GuessTheAnimal</main.class>-->
+<!--        <main.class>org.modernclients.ml.ui.DetectObjectsInVideo</main.class>-->
+<!--        <main.class>org.modernclients.ml.ui.DetectObjectsInVideoImproved</main.class>-->
+        <dl4j.version>1.0.0-M2.1</dl4j.version>
     </properties>
 
     <dependencies>
@@ -46,7 +49,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.0.6</version>
+            <version>1.5.6</version>
         </dependency>
         <dependency>
             <groupId>org.deeplearning4j</groupId>

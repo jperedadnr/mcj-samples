@@ -81,5 +81,7 @@
         <module>ch09-WebAndCloud/WeatherApp1</module>
         <module>ch09-WebAndCloud/WeatherApp2</module>
         <module>ch09-WebAndCloud/WeatherApp3</module>
+
+        <module>ch13-MachineLearning</module>
     </modules>
 </project>

@@ -1,4 +1,4 @@
-package org.modernjavafx.ml.model;
+package org.modernclients.ml.model;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.BiConsumer;

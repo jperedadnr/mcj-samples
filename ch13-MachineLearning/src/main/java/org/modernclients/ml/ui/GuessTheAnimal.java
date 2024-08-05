@@ -1,4 +1,4 @@
-package org.modernjavafx.ml.ui;
+package org.modernclients.ml.ui;
 
 import java.awt.Graphics;
 import java.awt.Image;

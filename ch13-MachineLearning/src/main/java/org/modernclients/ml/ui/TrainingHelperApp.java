@@ -1,4 +1,4 @@
-package org.modernjavafx.ml.ui;
+package org.modernclients.ml.ui;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,9 +10,9 @@ import java.util.ServiceLoader.Provider;
 
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.util.ModelSerializer;
-import org.modernjavafx.ml.model.AsyncScoreIterationListener;
-import org.modernjavafx.ml.model.DL4JHelper;
-import org.modernjavafx.ml.model.NeuralNetModel;
+import org.modernclients.ml.model.AsyncScoreIterationListener;
+import org.modernclients.ml.model.DL4JHelper;
+import org.modernclients.ml.model.NeuralNetModel;
 import org.nd4j.evaluation.classification.Evaluation;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 
@@ -105,7 +105,7 @@ public class TrainingHelperApp extends Application {
     }
 
     private Parent buildCenterPane() {
-        var evalutationChart = new LineChart<Number, Number>(new NumberAxis(), new NumberAxis());
+        var evaluationChart = new LineChart<Number, Number>(new NumberAxis(), new NumberAxis());
         var scoreChart = new LineChart<Number, Number>(new NumberAxis(), new NumberAxis());
 
         scoreSeries = new XYChart.Series<>();
@@ -118,9 +118,9 @@ public class TrainingHelperApp extends Application {
         accuracySeries.setName("Accuracy");
         f1Series = new XYChart.Series<>();
         f1Series.setName("F1 Score");
-        evalutationChart.getData().addAll(List.of(precisionSeries, accuracySeries, f1Series));
+        evaluationChart.getData().addAll(List.of(precisionSeries, accuracySeries, f1Series));
         
-        return new HBox(10, scoreChart, evalutationChart);
+        return new HBox(10, scoreChart, evaluationChart);
     }
     
     private Parent buildBottomPane() {

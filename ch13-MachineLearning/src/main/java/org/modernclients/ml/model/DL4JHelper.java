@@ -1,4 +1,4 @@
-package org.modernjavafx.ml.model;
+package org.modernclients.ml.model;
 
 import java.io.File;
 import java.io.IOException;
