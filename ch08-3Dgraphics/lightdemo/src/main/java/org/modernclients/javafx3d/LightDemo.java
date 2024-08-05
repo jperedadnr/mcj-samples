@@ -12,6 +12,7 @@ import javafx.scene.PerspectiveCamera;
 import javafx.scene.PointLight;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
+import javafx.scene.SpotLight;
 import javafx.scene.SubScene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -59,6 +60,9 @@ public class LightDemo extends Application {
         private final DoubleProperty blueLightX = new SimpleDoubleProperty(this, "blueLightX", 15.0d);
         private final DoubleProperty blueLightY = new SimpleDoubleProperty(this, "blueLightY", -15.0d);
         private final DoubleProperty blueLightZ = new SimpleDoubleProperty(this, "blueLightZ", -5.0d);
+        private final DoubleProperty greenLightX = new SimpleDoubleProperty(this, "greenLightX", 30.0d);
+        private final DoubleProperty greenLightY = new SimpleDoubleProperty(this, "greenLightY", -15.0d);
+        private final DoubleProperty greenLightZ = new SimpleDoubleProperty(this, "greenLightZ", 305.0d);
 
         public DoubleProperty redLightXProperty() {
             return redLightX;
@@ -83,6 +87,18 @@ public class LightDemo extends Application {
         public DoubleProperty blueLightZProperty() {
             return blueLightZ;
         }
+
+        public DoubleProperty greenLightXProperty() {
+            return greenLightX;
+        }
+
+        public DoubleProperty greenLightYProperty() {
+            return greenLightY;
+        }
+
+        public DoubleProperty greenLightZProperty() {
+            return greenLightZ;
+        }
     }
 
     private static class View {
@@ -94,6 +110,7 @@ public class LightDemo extends Application {
         public PerspectiveCamera camera;
         public PointLight redLight;
         public PointLight blueLight;
+        public SpotLight greenLight;
 
         private View(Model model) {
             box1 = new Box(10, 10, 10);
@@ -124,35 +141,21 @@ public class LightDemo extends Application {
             blueLight.translateYProperty().bind(model.blueLightYProperty());
             blueLight.translateZProperty().bind(model.blueLightZProperty());
 
+            greenLight = new SpotLight(Color.GREEN);
+            greenLight.translateXProperty().bind(model.greenLightXProperty());
+            greenLight.translateYProperty().bind(model.blueLightYProperty());
+            greenLight.translateZProperty().bind(model.blueLightZProperty());
+
             Group group = new Group(new Group(box1, box2, box3),
-                    camera, redLight, blueLight);
+                    camera, redLight, blueLight, greenLight);
             SubScene subScene = new SubScene(group, 640, 400, true, SceneAntialiasing.BALANCED);
             subScene.setCamera(camera);
 
             // Red Light
-            Tab redTab = new Tab("Red Light");
-            redTab.setClosable(false);
-            Rectangle red = new Rectangle(10, 10);
-            red.fillProperty().bind(Bindings.when(redLight.lightOnProperty()).then(Color.RED).otherwise(Color.DARKGREY));
-            redTab.setGraphic(red);
+            Tab redTab = createTab("Red Light", redLight);
 
-            CheckBox redLightOn = new CheckBox("Light On/Off");
-            redLightOn.setSelected(true);
-            redLight.lightOnProperty().bind(redLightOn.selectedProperty());
-
-            Slider redLightXSlider = createSlider(20);
-            Slider redLightYSlider = createSlider(-20);
-            Slider redLightZSlider = createSlider(-20);
-            redLightXSlider.valueProperty().bindBidirectional(model.redLightXProperty());
-            redLightYSlider.valueProperty().bindBidirectional(model.redLightYProperty());
-            redLightZSlider.valueProperty().bindBidirectional(model.redLightZProperty());
-
-            HBox hbox1 = new HBox(10, new Label("x:"), redLightXSlider,
-                    new Label("y:"), redLightYSlider,
-                    new Label("z:"), redLightZSlider);
-            hbox1.setPadding(new Insets(10, 10, 10, 10));
-            hbox1.setAlignment(Pos.CENTER);
-
+            CheckBox redLightOn = createCheckBox(redLight);
+            HBox hbox1 = createXYZHBox(model.redLightX, model.redLightY, model.redLightZ);
             HBox hbox2 = new HBox(10, createScopeToggles(box1), createScopeToggles(box2), createScopeToggles(box3));
             hbox2.setPadding(new Insets(10, 10, 10, 10));
             hbox2.setAlignment(Pos.CENTER);
@@ -163,42 +166,64 @@ public class LightDemo extends Application {
             redTab.setContent(redControlPanel);
 
             // Blue Light
-            Tab blueTab = new Tab("Blue Light");
-            blueTab.setClosable(false);
-            Rectangle blue = new Rectangle(10, 10);
-            blue.fillProperty().bind(Bindings.when(blueLight.lightOnProperty()).then(Color.BLUE).otherwise(Color.DARKGREY));
-            blueTab.setGraphic(blue);
+            Tab blueTab = createTab("Blue Light", blueLight);
 
-
-            CheckBox blueLightOn = new CheckBox("Light On/Off");
-            blueLightOn.setSelected(true);
-            blueLight.lightOnProperty().bind(blueLightOn.selectedProperty());
-
-            Slider blueLightXSlider = createSlider(15);
-            Slider blueLightYSlider = createSlider(-15);
-            Slider blueLightZSlider = createSlider(-15);
-            blueLightXSlider.valueProperty().bindBidirectional(model.blueLightXProperty());
-            blueLightYSlider.valueProperty().bindBidirectional(model.blueLightYProperty());
-            blueLightZSlider.valueProperty().bindBidirectional(model.blueLightZProperty());
-
-            HBox hbox3 = new HBox(10, new Label("x:"), blueLightXSlider,
-                    new Label("y:"), blueLightYSlider,
-                    new Label("z:"), blueLightZSlider);
-            hbox3.setPadding(new Insets(10, 10, 10, 10));
-            hbox3.setAlignment(Pos.CENTER);
-
-            HBox hbox4 = new HBox(50, addLightControls(blueLight));
-            hbox4.setPadding(new Insets(10, 10, 10, 10));
-            hbox4.setAlignment(Pos.CENTER);
+            CheckBox blueLightOn = createCheckBox(blueLight);
+            HBox hbox3 = createXYZHBox(model.blueLightX, model.blueLightY, model.blueLightZ);
+            HBox hbox4 = addLightControls(blueLight);
 
             VBox blueControlPanel = new VBox(10, blueLightOn, hbox3, hbox4);
             blueControlPanel.setPadding(new Insets(10, 10, 10, 10));
             blueControlPanel.setAlignment(Pos.CENTER);
             blueTab.setContent(blueControlPanel);
 
-            TabPane tabPane = new TabPane(redTab, blueTab);
+            // Green Light
+            Tab greenTab = createTab("Green Light", greenLight);
+
+            CheckBox greenLightOn = createCheckBox(greenLight);
+            HBox hbox5 = createXYZHBox(model.greenLightX, model.greenLightY, model.greenLightZ);
+            HBox hBox6 = addSpotLightControls(greenLight);
+
+            VBox greenControlPanel = new VBox(10, greenLightOn, hbox5, hBox6);
+            greenControlPanel.setPadding(new Insets(10, 10, 10, 10));
+            greenControlPanel.setAlignment(Pos.CENTER);
+            greenTab.setContent(greenControlPanel);
+
+            TabPane tabPane = new TabPane(redTab, blueTab, greenTab);
             BorderPane borderPane = new BorderPane(subScene, null, null, tabPane, null);
             scene = new Scene(borderPane);
+        }
+
+        private Tab createTab(String title, PointLight light) {
+            Tab tab = new Tab(title);
+            tab.setClosable(false);
+            Rectangle red = new Rectangle(10, 10);
+            red.fillProperty().bind(Bindings.when(light.lightOnProperty()).then(light.getColor()).otherwise(Color.DARKGREY));
+            tab.setGraphic(red);
+            return tab;
+        }
+
+        private CheckBox createCheckBox(PointLight light) {
+            CheckBox lightOnCheckBox = new CheckBox("Light On/Off");
+            lightOnCheckBox.setSelected(true);
+            light.lightOnProperty().bind(lightOnCheckBox.selectedProperty());
+            return lightOnCheckBox;
+        }
+
+        private HBox createXYZHBox(DoubleProperty xProperty, DoubleProperty yProperty, DoubleProperty zProperty) {
+            Slider lightXSlider = createSlider(20);
+            Slider lightYSlider = createSlider(-20);
+            Slider lightZSlider = createSlider(-20);
+            lightXSlider.valueProperty().bindBidirectional(xProperty);
+            lightYSlider.valueProperty().bindBidirectional(yProperty);
+            lightZSlider.valueProperty().bindBidirectional(zProperty);
+
+            HBox hBox = new HBox(10, new Label("x:"), lightXSlider,
+                    new Label("y:"), lightYSlider,
+                    new Label("z:"), lightZSlider);
+            hBox.setPadding(new Insets(10, 10, 10, 10));
+            hBox.setAlignment(Pos.CENTER);
+            return hBox;
         }
 
         private Slider createSlider(double value) {
@@ -235,7 +260,21 @@ public class LightDemo extends Application {
             VBox c = createSliderControl("constant", light.constantAttenuationProperty(), -1, 1, light.getConstantAttenuation());
             VBox lc = createSliderControl("linear", light.linearAttenuationProperty(), -1, 1, light.getLinearAttenuation());
             VBox qc = createSliderControl("quadratic", light.quadraticAttenuationProperty(), -1, 1, light.getQuadraticAttenuation());
-            return new HBox(10, range, c, lc, qc);
+            HBox hBox = new HBox(10, range, c, lc, qc);
+            hBox.setPadding(new Insets(10, 10, 10, 10));
+            hBox.setAlignment(Pos.CENTER);
+            return hBox;
+        }
+
+        // since JavaFX 17 -->
+        private HBox addSpotLightControls(SpotLight light) {
+            VBox innerAngle = createSliderControl("innerAngle", light.innerAngleProperty(), 0, 180, light.getInnerAngle());
+            VBox outerAngle = createSliderControl("outerAngle", light.outerAngleProperty(), 0, 180, light.getOuterAngle());
+            VBox falloff = createSliderControl("falloff", light.falloffProperty(), 0, 10, light.getFalloff());
+            HBox hBox = new HBox(10, innerAngle, outerAngle, falloff);
+            hBox.setPadding(new Insets(10, 10, 10, 10));
+            hBox.setAlignment(Pos.CENTER);
+            return hBox;
         }
 
         private VBox createSliderControl(String name, DoubleProperty property, double min, double max, double start) {
