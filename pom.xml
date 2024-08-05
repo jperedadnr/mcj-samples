@@ -64,6 +64,16 @@
         <module>ch07-BridgingSwingAndJavaFX/3dfx-in-swing</module>
         <module>ch07-BridgingSwingAndJavaFX/swinginfx</module>
 
+        <module>ch08-3Dgraphics/simplesphere</module>
+        <module>ch08-3Dgraphics/spherecylinderbox</module>
+        <module>ch08-3Dgraphics/shapesandmesh</module>
+        <module>ch08-3Dgraphics/perspectivecamera</module>
+        <module>ch08-3Dgraphics/lightdemo</module>
+        <module>ch08-3Dgraphics/specularcolordemo</module>
+        <module>ch08-3Dgraphics/earthsphere</module>
+        <module>ch08-3Dgraphics/eventdemo</module>
+        <module>ch08-3Dgraphics/fxyzdemo</module>
+
         <module>ch09-WebAndCloud/WebView</module>
         <module>ch09-WebAndCloud/WebViewAction</module>
         <module>ch09-WebAndCloud/WebViewHistory</module>
