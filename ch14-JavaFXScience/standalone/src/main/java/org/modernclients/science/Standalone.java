@@ -1,6 +1,5 @@
-package org.modernclient;
+package org.modernclients.science;
 
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class StandAlone {
+public class Standalone {
 
     public static void showHello() {
         Platform.startup(() -> {});
@@ -16,7 +15,7 @@ public class StandAlone {
         Platform.runLater( () -> {
             Label label = new Label ("Hello, standalone JavaFX");
             Button button = new Button ("Click me");
-            button.setOnAction(e -> {label.setText("Clicked");});
+            button.setOnAction(e -> label.setText("Clicked"));
             button.setTranslateY(50);
             StackPane box = new StackPane();
             box.getChildren().addAll(label, button);

@@ -83,5 +83,9 @@
         <module>ch09-WebAndCloud/WeatherApp3</module>
 
         <module>ch13-MachineLearning</module>
+
+        <module>ch14-JavaFXScience/hellond4j</module>
+        <module>ch14-JavaFXScience/standalone</module>
+        <module>ch14-JavaFXScience/nd4jshell</module>
     </modules>
 </project>

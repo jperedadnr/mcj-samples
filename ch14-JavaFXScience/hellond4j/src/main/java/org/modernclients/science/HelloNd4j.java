@@ -1,4 +1,4 @@
-package org.modernclient;
+package org.modernclients.science;
 
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
