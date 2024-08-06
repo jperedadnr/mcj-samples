@@ -82,6 +82,9 @@
         <module>ch09-WebAndCloud/WeatherApp2</module>
         <module>ch09-WebAndCloud/WeatherApp3</module>
 
+        <module>ch12-RaspberryPi/Sample3</module>
+        <module>ch12-RaspberryPi/Sample7</module>
+
         <module>ch13-MachineLearning</module>
 
         <module>ch14-JavaFXScience/hellond4j</module>
