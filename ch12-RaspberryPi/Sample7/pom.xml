@@ -18,7 +18,6 @@
 
     <properties>
         <runtime.jvm.options/>
-        <javafx.path/>
         <main.class>org.modernclients.raspberrypi.gps.MainApp</main.class>
     </properties>
 
@@ -98,6 +97,7 @@
         <profile>
             <id>pi</id>
             <properties>
+                <javafx.systemPath>/opt/javafx-sdk-23/lib</javafx.systemPath>
                 <runtime.options>-Duse.fullscreen=true,-Dmonocle.platform=EGL,-Dembedded=monocle,-Dglass.platform=Monocle</runtime.options>
                 <runtime.jvm.options>-Dmonocle.egl.lib=/opt/javafx-sdk-23/lib/libgluon_drm-1.1.7.so,${runtime.options}</runtime.jvm.options>
             </properties>
@@ -107,28 +107,28 @@
                     <artifactId>javafx-base</artifactId>
                     <version>${javafx.version}</version>
                     <scope>system</scope>
-                    <systemPath>${javafx.path}/lib/javafx.base.jar</systemPath>
+                    <systemPath>${javafx.systemPath}/javafx.base.jar</systemPath>
                 </dependency>
                 <dependency>
                     <groupId>org.openjfx</groupId>
                     <artifactId>javafx-graphics</artifactId>
                     <version>${javafx.version}</version>
                     <scope>system</scope>
-                    <systemPath>${javafx.path}/lib/javafx.graphics.jar</systemPath>
+                    <systemPath>${javafx.systemPath}/javafx.graphics.jar</systemPath>
                 </dependency>
                 <dependency>
                     <groupId>org.openjfx</groupId>
                     <artifactId>javafx-controls</artifactId>
                     <version>${javafx.version}</version>
                     <scope>system</scope>
-                    <systemPath>${javafx.path}/lib/javafx.controls.jar</systemPath>
+                    <systemPath>${javafx.systemPath}/javafx.controls.jar</systemPath>
                 </dependency>
                 <dependency>
                     <groupId>org.openjfx</groupId>
                     <artifactId>javafx-fxml</artifactId>
                     <version>${javafx.version}</version>
                     <scope>system</scope>
-                    <systemPath>${javafx.path}/lib/javafx.fxml.jar</systemPath>
+                    <systemPath>${javafx.systemPath}/javafx.fxml.jar</systemPath>
                 </dependency>
             </dependencies>
         </profile>
