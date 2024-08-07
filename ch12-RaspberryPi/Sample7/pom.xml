@@ -18,8 +18,7 @@
 
     <properties>
         <runtime.jvm.options/>
-        <remote.host.name/>
-        <remote.dir/>
+        <javafx.path/>
         <main.class>org.modernclients.raspberrypi.gps.MainApp</main.class>
     </properties>
 
@@ -35,9 +34,9 @@
             <version>${javafx.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.pi4j</groupId>
-            <artifactId>pi4j-core</artifactId>
-            <version>2.6.1</version>
+            <groupId>com.fazecast</groupId>
+            <artifactId>jSerialComm</artifactId>
+            <version>2.11.0</version>
         </dependency>
         <dependency>
             <groupId>com.gluonhq</groupId>
@@ -99,11 +98,39 @@
         <profile>
             <id>pi</id>
             <properties>
-                <remote.host.name>pi@raspberrypi.local</remote.host.name>
-                <remote.dir>/home/pi/ModernClients/ch12-RaspberryPi/Sample7</remote.dir>
                 <runtime.options>-Duse.fullscreen=true,-Dmonocle.platform=EGL,-Dembedded=monocle,-Dglass.platform=Monocle</runtime.options>
                 <runtime.jvm.options>-Dmonocle.egl.lib=/opt/javafx-sdk-23/lib/libgluon_drm-1.1.7.so,${runtime.options}</runtime.jvm.options>
             </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>javafx-base</artifactId>
+                    <version>${javafx.version}</version>
+                    <scope>system</scope>
+                    <systemPath>${javafx.path}/lib/javafx.base.jar</systemPath>
+                </dependency>
+                <dependency>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>javafx-graphics</artifactId>
+                    <version>${javafx.version}</version>
+                    <scope>system</scope>
+                    <systemPath>${javafx.path}/lib/javafx.graphics.jar</systemPath>
+                </dependency>
+                <dependency>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>javafx-controls</artifactId>
+                    <version>${javafx.version}</version>
+                    <scope>system</scope>
+                    <systemPath>${javafx.path}/lib/javafx.controls.jar</systemPath>
+                </dependency>
+                <dependency>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>javafx-fxml</artifactId>
+                    <version>${javafx.version}</version>
+                    <scope>system</scope>
+                    <systemPath>${javafx.path}/lib/javafx.fxml.jar</systemPath>
+                </dependency>
+            </dependencies>
         </profile>
     </profiles>
 </project>
